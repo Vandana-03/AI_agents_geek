@@ -21,3 +21,16 @@ create_jira_issue(
 )
 **Available Actions**
 Create an issue in Jira Software: This action allows the agent to create a new Jira issue with a specified summary and description.
+
+*****************************************************************************************************************************************
+03_Ai_Agent_To add test cases to a sheet.json
+
+Created chat trigger
+
+AI AGENT
+Chat Model: Added groq chat model
+Storage: Added a storage
+
+Tool: 
+Added google sheet to add the generated test cases
+Jira connected as a tool
