@@ -1,0 +1,147 @@
+{
+  "name": "01_jira_connect",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nMy name is Ana. How can I assist you today?",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -384,
+        -64
+      ],
+      "id": "90289771-f6f4-4c35-9f86-b65872e3e910",
+      "name": "When chat message received",
+      "webhookId": "27e469d4-3a2a-4bd5-a8c8-b749f9b61124"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -112,
+        -32
+      ],
+      "id": "d32719c4-2ef4-4652-b23a-4973a5951214",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        176
+      ],
+      "id": "c8d8c40f-6527-4268-b77e-360cf419c228",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "tp68JD0AygJUhVMT",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "10000",
+          "mode": "list",
+          "cachedResultName": "AI_bot"
+        },
+        "issueType": {
+          "__rl": true,
+          "value": "10007",
+          "mode": "list",
+          "cachedResultName": "Bug"
+        },
+        "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}",
+        "additionalFields": {
+          "assignee": {
+            "__rl": true,
+            "value": "603a668821d9bc006880ed5b",
+            "mode": "list",
+            "cachedResultName": "Prateek A"
+          },
+          "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.jiraTool",
+      "typeVersion": 1,
+      "position": [
+        48,
+        176
+      ],
+      "id": "efd4b829-37cb-4903-8b7e-d59e233ced7a",
+      "name": "Create an issue in Jira Software",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "mkpUfr3CfmCAO9HU",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an issue in Jira Software": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "55bad58f-4cf7-42d9-aa5f-029cb256292c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "40ab2e6515930b7eb8b323ae6db7e9f31ad401d8fe2155742a647c5d936ce48d"
+  },
+  "id": "PBzIflCWuwVPkZ2m",
+  "tags": [
+    {
+      "updatedAt": "2025-11-28T11:56:34.278Z",
+      "createdAt": "2025-11-28T11:56:34.278Z",
+      "id": "9anZgjKtjYPjxat3",
+      "name": "learning purpose"
+    }
+  ]
+}
