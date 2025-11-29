@@ -1,3 +1,5 @@
+01_jira_connect.json
+
 **Jira Issue Creation Agent**
 This agent facilitates the automatic creation of issues within Jira Software.
 
